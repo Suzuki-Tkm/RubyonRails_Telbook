@@ -1,0 +1,15 @@
+<% @page_title = "友達の新規登録" %>
+
+<h1><%= @page_title %></h1>
+
+<%= form_for @friend do |form| %>
+  <table class="attr">
+    <tr>
+      <th><%= form.label :name, "名前" %></th>
+      <td><%= form.text_field :name, size: 8 %></td>
+    </tr>
+  </table>
+  <div><%= form.submit %></div>
+<% end %>
+
+<div class="toolbar"><%= link_to "TOP", friends_path %></div> 
