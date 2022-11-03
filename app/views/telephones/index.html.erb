@@ -1,4 +1,4 @@
-<% @page_title = @friend ? @friend.name + "さんのブログ" : "会員のブログ" %>
+<% @page_title = @friend ? @friend.name + "さん" : "会員" %>
 <h1><%= @page_title %></h1>
 
 <% if @telephones.present? %>
@@ -13,7 +13,7 @@
             <% end%>
           </td>
           <td>
-          <%= link_to "削除", "#" , method: :delete, data: { confirm: "本当に削除しますか?" } %>
+          <%= link_to "削除", [@friend , telephone] , method: :delete, data: { confirm: "本当に削除しますか?" } %>
           </td>
         </tr>
       <% end %>
@@ -22,3 +22,7 @@
 <% else %>
   <p>記事がありません。</p>
 <% end %>
+
+
+
+<div class="toolbar"><%= link_to "TOP", friends_path %></div> 
