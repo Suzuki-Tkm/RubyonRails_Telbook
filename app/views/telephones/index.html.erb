@@ -23,6 +23,14 @@
   <p>記事がありません。</p>
 <% end %>
 
-
+<%= form_for [@friend , @telephone_new] do |form| %>
+  <table class="attr">
+    <tr>
+      <td><%= form.text_field :number, size: 8 %></td>
+      <td><%= form.check_box :cellphone %></td>
+    </tr>
+  </table>
+  <div><%= form.submit %></div>
+<% end %>
 
 <div class="toolbar"><%= link_to "TOP", friends_path %></div> 

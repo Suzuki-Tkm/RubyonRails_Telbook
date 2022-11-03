@@ -2,22 +2,21 @@ class TelephonesController < ApplicationController
   def index
     @friend = Friend.find(params[:friend_id])
     @telephones = @friend.telephones
-    @t = Telephone.new()
+    @telephone_new = Telephone.new()
   end
 
   def show
   end
 
   def new
-
-    @t = Telephone.new()
   end
 
   def create
-    @telephone = Telephone.new(params.require(:telephone).permit(:number , :cellphone))
-    # @telephone.name = Friend.find(params[:friend_id]).name
+    @friend = Friend.find(params[:friend_id])
+    @telephone = Telephone.new(params.require(:telephone).permit(:friend , :number , :cellphone))
+    @telephone.name =  Friend.find(params[:friend_id])
     if @telephone.save
-      redirect_to "new" ,  notice: "電話番号を登録しました。"
+      redirect_to [@friend , :telephones] ,  notice: "電話番号を登録しました。"
     else
       render "new"
     end
