@@ -1,0 +1,24 @@
+<% @page_title = @friend ? @friend.name + "さんのブログ" : "会員のブログ" %>
+<h1><%= @page_title %></h1>
+
+<% if @telephones.present? %>
+  <table class="list">
+    <tbody>
+      <% @telephones.each do |telephone| %>
+        <tr>
+          <td><p><%= telephone.number %></p></td>
+          <td>
+            <% if telephone.cellphone %>
+              <p>◯</p>
+            <% end%>
+          </td>
+          <td>
+          <%= link_to "削除", "#" , method: :delete, data: { confirm: "本当に削除しますか?" } %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% else %>
+  <p>記事がありません。</p>
+<% end %>

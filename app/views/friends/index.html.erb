@@ -9,7 +9,7 @@
       <% @friends.each do |friend| %>
         <tr>
           <td><%= friend.id %></td>
-          <td><%= link_to friend.name, friend%> </td>
+          <td><%= link_to friend.name, [friend , :telephones] %> </td>
           <td>
             <%= link_to "編集", [:edit, friend] %>
           </td>
