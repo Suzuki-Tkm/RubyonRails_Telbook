@@ -2,6 +2,8 @@
 
 <h1><%= @page_title %></h1>
 
+<%= render "shared/errors", obj: @friend %>
+
 <%= form_for @friend do |form| %>
   <table class="attr">
     <tr>

@@ -1,6 +1,8 @@
 <% @page_title = @friend ? @friend.name + "さん" : "会員" %>
 <h1><%= @page_title %></h1>
 
+<%= render "shared/errors", obj: @telephone %>
+
 <% if @telephones.present? %>
   <table class="list">
     <tbody>
@@ -20,7 +22,7 @@
     </tbody>
   </table>
 <% else %>
-  <p>記事がありません。</p>
+  <p>電話番号がありません。</p>
 <% end %>
 
 <%= form_for [@friend , @telephone_new] do |form| %>

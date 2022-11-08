@@ -3,6 +3,8 @@ class TelephonesController < ApplicationController
     @friend = Friend.find(params[:friend_id])
     @telephones = @friend.telephones
     @telephone_new = Telephone.new()
+
+    @telephone = Telephone.new(number: "111-1111-1111")
   end
 
   def show
@@ -18,7 +20,10 @@ class TelephonesController < ApplicationController
     if @telephone.save
       redirect_to [@friend , :telephones] ,  notice: "電話番号を登録しました。"
     else
-      render "new"
+      @friend = Friend.find(params[:friend_id])
+      @telephones = @friend.telephones
+      @telephone_new = Telephone.new()
+      render "index"
     end
   end
 
